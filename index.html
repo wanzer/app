@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<div ng-controller="phoneController">
+<p>Название: {{phone.name}}</p>
+<p>Цена: {{phone.price}} $</p>
+<p>Производитель: {{phone.company.name}}</p>
+</div>
+<div ng-controller="phoneController">
+    <ng-include src="'phonesList.html'"></ng-include>
+</div>
+<div ng-controller="phoneController">
+<ul>
+<li ng-repeat="phone in phones">
+<b>{{phone.name}}</b>
+<p>Цена: {{phone.price}} $</p>
+<p>Производитель: {{phone.company.name}}</p>
+</li>
+</ul>
+</div>
+<hr>
+<div ng-controller="phoneController">
+<p>Производитель: {{phone.company.country}}</p>
+</div>
+<script src="js/lib/angular.min.js"></script>
+<script type="text/javascript">
+angular.module('myApp', []);
+</script>
+<script src="js/controllers/phoneController.js"></script>
+</body>
+</html>

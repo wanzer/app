@@ -1,0 +1,75 @@
+<!doctype html>
+<html ng-app='myApp'>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/mystyles.css" />
+</head>
+<style>
+.quest {
+    border-bottom: 1px solid #aaa; 
+    margin-bottom: 10px; 
+}
+.questcolor {
+    background: #F6F6F6;
+}
+.questselectedcolor{ 
+    background: #ddd;
+}
+.answer {
+    border-bottom: 1px solid #ccc; 
+    margin-bottom: 10px;
+}
+.vote {
+    float: left; 
+    text-align: center; 
+    width: 21px; 
+    margin-right: 20px;
+}
+.vote-up, .vote-down{
+    display: block;
+    margin: 0px auto;
+    width: 21px;
+    height: 25px;
+}
+.vote-up{
+    background-position: 0px 0px;
+    background-image: url("../img/sprite.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.vote-down{
+    background-position: 0px -20px;
+    background-image: url("../img/sprite.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+</style>
+<body>
+<div  ng-controller="QuestionController">
+<div class="quest" ng-class="questColorClass"
+ng-mouseenter="changeClass($event)"
+ng-mouseleave="changeClass($event)">
+<h3>{{question.text}}</h3>
+<p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
+</div>
+<h3>Ответы</h3>
+<div class="answers">
+<div ng-repeat="answer in question.answers" class="answer">
+<div class="vote">
+    <a class="vote-up" ng-click="voteUp(answer)"></a>
+    <span class="rate">{{answer.rate}}</span>
+    <a class="vote-down" ng-click="voteDown(answer)"></a>
+</div>
+<b>{{answer.text}}</b>
+<p>{{answer.author}}</p>
+<p><i>{{answer.date}}</i></p>
+</div>
+</div>
+</div>
+<script src="js/lib/angular.min.js"></script>
+<script type="text/javascript">
+var myApp = angular.module('myApp', []);
+</script>
+<script src="js/controllers/QuestionController.js"></script>
+</body>
+</html>
